@@ -401,8 +401,6 @@ class KaliToolsManager:
             self.config_manager = ConfigManager(self.tools)
             return True
         return False
-    # Discovery via Kali tools website only (local apt-cache discovery removed)
-    
     def _check_system_requirements(self):
         """Check if system meets requirements on startup"""
         if not self.is_debian_based():
@@ -990,8 +988,6 @@ class KaliToolsManager:
         except (subprocess.TimeoutExpired, FileNotFoundError):
             return False
 
-    # Rating functionality removed
-
     def get_dependencies(self, package_name: str) -> List[str]:
         """Get package dependencies"""
         if package_name in self._dependency_cache:
@@ -1526,8 +1522,6 @@ class KaliToolsManager:
         except Exception:
             return None
 
-    # Discovery logic removed (apt-cache based). Future implementation should scrape Kali tools site.
-
     # ---------- Discovery from Kali tools website ----------
     def _kali_site_cache_path(self) -> Path:
         cache_dir = Path.home() / '.cache' / 'kalitools'
@@ -1862,8 +1856,6 @@ class KaliToolsManager:
         self._categorize_tools()
         return added
 
-    # Ratings persistence removed
-
     def get_cached_description(self, package_name: str) -> Optional[str]:
         """Return (and cache) a short description for a package using apt-cache show.
 
@@ -1975,8 +1967,6 @@ class KaliToolsManager:
         except Exception as e:
             console.print(f"[red]Error launching tool: {e}[/red]")
             return False
-
-    # recommend_tools removed
 
     def create_backup(self) -> bool:
         """Create backup of installed packages"""

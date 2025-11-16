@@ -49,3 +49,10 @@ def configure_logging(level: str = "INFO") -> None:
         level=level.upper(),
         format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
     )
+
+try:  # Re-export for callers/tests that expect package-level access
+    from .manager import KaliToolsManager  # noqa: E402
+
+    __all__.append("KaliToolsManager")
+except Exception:  # pragma: no cover - avoid failing during partial installs
+    KaliToolsManager = None  # type: ignore

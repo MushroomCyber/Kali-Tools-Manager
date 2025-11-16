@@ -1,6 +1,6 @@
 # Kali Tools Manager
 
-Terminal UI and automation helpers for browsing, installing, and exporting Kali Linux tooling metadata. **The application targets Kali Linux (or other Debian-based security distributions) exclusively; Windows and macOS are not supported.** The project now ships as a small package (`kalitools/`) with a thin launcher `kalitools.py` so you can either run `python kalitools.py` or `python -m kalitools`.
+Terminal UI and automation helpers for browsing, installing, and exporting Kali Linux tooling metadata. **The application targets Kali Linux (or other Debian-based security distributions).** The project  ships as a small package (`kalitools/`) with a thin launcher `kalitools.py` so you can either run `python kalitools.py` or `python -m kalitools`.
 
 ## Features
 - Rich- or basic-mode terminal interface with keyboard navigation, search, categories, utilities menu, and status widgets.
@@ -10,7 +10,7 @@ Terminal UI and automation helpers for browsing, installing, and exporting Kali 
 - Modular code layout (`kalitools.manager`, `kalitools.ui`, `kalitools.cli`, etc.) with reusable data model and configuration helpers.
 
 ## Requirements
-Kali Tools Manager targets **Kali Linux and other Debian-based security distributions**. It expects `apt`, `dpkg`, and `sudo` to be available; Windows and macOS are not supported.
+Kali Tools Manager targets **Kali Linux and other Debian-based security distributions**. 
 
 Install runtime dependencies inside your Kali shell:
 
@@ -33,12 +33,10 @@ Inspect command-line options:
 python3 -m kalitools --help
 ```
 
-## Testing
-Lightweight unit tests cover parser defaults, UI auto-detection logic, and model normalization. Run them with the built-in `unittest` runner:
+## Utilities Explained
 
-```bash
-python3 -m unittest discover tests
-```
+- **dpkg backups** – captures the output of `dpkg --get-selections` into a timestamped text file under your home directory. This snapshot lets you recreate the current package state later (`dpkg --set-selections` + `apt-get dselect-upgrade`). Use it before large upgrade sessions or when migrating to fresh Kali installs.
+- **Local repo configuration** – prompts for an absolute path that contains a mirrored Debian repository (for example, a USB drive or LAN share). The manager writes that path to `~/.kali_tools_local_repo.txt` so install/uninstall helpers can temporarily point `apt`/`dpkg` commands at the offline mirror, reducing bandwidth use during live engagements.
 
 ## Project Layout
 ```
@@ -56,5 +54,4 @@ README.md                   # this file
 
 ## Additional Documentation
 
-- `docs/GETTING_STARTED.md` – step-by-step environment setup, dependency installation, and test commands.
-- `docs/GITHUB_UPLOAD.md` – instructions for initializing git locally and pushing the project to a new GitHub repository.
+

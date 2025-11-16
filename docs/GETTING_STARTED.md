@@ -1,7 +1,5 @@
 # Getting Started
 
-> **Important:** Kali Tools Manager is not supported on Windows or macOS. This guide assumes you are running **Kali Linux or another Debian-based penetration-testing distro** with `apt`, `dpkg`, and `sudo`.
-
 ## 1. Clone or Download
 
 ```bash
@@ -50,16 +48,11 @@ For CLI usage details:
 python3 -m kalitools --help
 ```
 
-## 6. Run the Test Suite
-
-```bash
-python3 -m unittest discover tests
-```
-
-Successful output should end with `OK`.
-
-## 7. Next Steps
+## 6. Next Steps
 
 - Review `README.md` for feature highlights.
 - Browse `kalitools/ui.py` for the interactive key bindings.
 - See `docs/GITHUB_UPLOAD.md` when you are ready to publish the repository to GitHub.
+- Explore the in-app **Utilities** menu (`Y` key) for:
+	- **dpkg backups** – writes `dpkg --get-selections` to a timestamped file so you can restore package selections later.
+	- **Local repo configuration** – records the path to an offline/air-gapped repository mirror so installs can source packages without Internet access.

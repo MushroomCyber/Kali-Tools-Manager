@@ -55,7 +55,6 @@ Refresh the repository page—files, docs, and history should match your local t
 
 ## 8. Ongoing Workflow
 - Make changes locally.
-- Run tests (`python -m unittest discover tests`).
 - Commit with meaningful messages.
 - `git push` to share updates.
 

@@ -131,13 +131,11 @@ class ToolsUI:
             self.cursor_index = 0
 
     def confirm_action(self, message: str, default: bool = False) -> bool:
-        """Unified confirmation dialog (quick mode removed)."""
+        """Unified confirmation dialog."""
         try:
             return Confirm.ask(message, default=default)
         except KeyboardInterrupt:
             return False
-
-    # Selection helpers removed
 
     def get_filtered_tools(self) -> List[Dict]:
         """Return tools list after applying current filter/search criteria"""
@@ -149,8 +147,6 @@ class ToolsUI:
             tools = self.manager.filter_by_status(False)
         else:
             tools = self.manager.tools
-
-        # Rating population removed
 
         if self.search_query:
             query = self.search_query.lower()
@@ -674,10 +670,6 @@ class ToolsUI:
 
         return result_container["value"]
 
-    # Detailed statistics panel removed
-
-    # History view removed
-
     def list_tools_interactive(self):
         """Interactive tool browser with real-time keyboard navigation"""
         if not TERMIOS_AVAILABLE:
@@ -940,8 +932,6 @@ class ToolsUI:
                 self.show_tool_details(tool['name'])
                 needs_render = True
 
-            # Space selection removed
-
             elif key == 'I':
                 tool = page_tools[self.cursor_index]
                 console.clear()
@@ -959,11 +949,6 @@ class ToolsUI:
                 console.clear()
                 self.categorize_tool(tool)
                 needs_render = True
-
-            # Toggle selection removed
-
-            # Removed: A (Select All) and V (Clear selection)
-
 
             elif key in ('N', 'RIGHT'):
                 if self.current_page < total_pages:
@@ -995,12 +980,6 @@ class ToolsUI:
                 clear_filters()
                 self.status_message = "[cyan]Showing all tools[/cyan]"
                 needs_render = True
-
-            # Removed: L (show all) browse filter
-
-            # Favorites view removed
-
-
 
             elif key == 'U':
 
@@ -1035,13 +1014,6 @@ class ToolsUI:
 
                 utilities_action()
                 needs_render = True
-
-            # Discovery key removed
-
-            # Stats panel removed
-
-            # Removed: H history, W recommendations
-
             elif key == '?':
 
                 def help_action():
@@ -1329,19 +1301,12 @@ class ToolsUI:
         
         console.print("\n[dim]Press any key to continue...[/dim]")
         input("Press Enter to continue...")
-
-    # Categories view removed
-
-    # Recommendations view removed
-
     def show_menu(self):
-        """Deprecated quick menu stub removed: always use interactive list."""
+        """Entry point for launching the interactive list directly."""
         self.list_tools_interactive()
 
-    # Favorites views removed
-
     def show_help(self):
-        """Show compact keyboard shortcuts help (favorites, multi-select, stats removed)."""
+        """Show compact keyboard shortcuts help."""
         help_text = """
 [bold cyan]╔═══════════════════════════════════════════════════════════════╗[/bold cyan]
 [bold cyan]║              INTERACTIVE KEYBOARD NAVIGATION GUIDE             ║[/bold cyan]
@@ -1389,9 +1354,6 @@ class ToolsUI:
 [bold cyan]═══════════════════════════════════════════════════════════════[/bold cyan]
         """
         console.print(help_text)
-
-    # Discovery UI removed
-    
 
     def run(self):
         """Main application loop - starts directly in tool list with enhanced features"""
